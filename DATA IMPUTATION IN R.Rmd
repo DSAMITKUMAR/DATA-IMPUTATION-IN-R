@@ -1,0 +1,79 @@
+---
+title: "data imputation in r"
+output: html_document
+---
+
+
+All the variable in the dataset are majorly divided into numeric and char.
+Na values for numeric variable are filed via mean or mode
+Na values for char variable are filled via mode 
+mode(function we have to create its not aN PREDEFINED VARIABLE)
+
+```{r}
+
+marks <- c(88,95,93,NA,76,91,83,NA,69,88)
+marks
+
+mean(marks)
+median(marks)
+sd(marks)
+
+#The output value of all the function above is NA because there are na values in a  vector
+
+
+#is.na
+marks[is.na(marks)] #it will show all the na values 
+marks[!is.na(marks)] # it will show all the valid (no na) values
+
+#Lets now take out the mean median and sd of the marks eleminating na values
+mean(marks[!is.na(marks)])
+median(marks[!is.na(marks)])
+sd(marks[!is.na(marks)])
+
+#missing value imoutation 
+marks1 <- marks
+marks2 <- marks
+
+#mean imputation
+marks1
+
+marks1[is.na(marks1)] <- mean(marks1[!is.na(marks1)])
+marks1
+
+#median imputation
+marks2[is.na(marks2)] <-median(marks2[!is.na(marks2)])
+
+
+#Mode
+Mode <- function(x) {
+  ux <- unique(cname)
+  ux[which.max(tabulate(match(cname, ux)))]
+}
+
+#Imputation of char vector ()
+#Mode function are used to substitute cHAR VARIABLE na VALUES.
+
+cname <- c("amit","akku","sam","jos",NA,"axe","sneha","sneha",NA,"amit","amit","rupesh")
+
+cname[is.na(cname)] <- Mode(cname)
+
+```
+
+
+#Missing Value - Imputation uing Simple Linear Regression using R
+```{r}
+data <- c(12,43,26,23,NA,24,67,43,NA,21)
+
+which(is.na(data))
+which(!is.na(data))
+
+data[which(is.na(data))]
+
+data[which(!is.na(data))]
+
+
+https://www.youtube.com/watch?v=ajg1p5ofX0c
+
+to be cont....
+
+```
